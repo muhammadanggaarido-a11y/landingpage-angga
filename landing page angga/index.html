@@ -1,0 +1,2916 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Muhammad Angga Arido | Personal Portfolio</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --black:#030605;
+    --dark:#07100c;
+    --green:#00e5a0;
+    --gold:#d8b76a;
+    --gold-light:#f2d68d;
+    --white:#f5f7f4;
+    --gray:#9ba7a1;
+    --muted:#68746e;
+}
+
+body{
+    background:var(--black);
+    color:var(--white);
+    font-family:"Segoe UI",Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+::selection{
+    background:var(--green);
+    color:#00140d;
+}
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--black);
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        var(--green),
+        var(--gold)
+    );
+    border-radius:20px;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-5;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(0,229,160,.09),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(216,183,106,.08),
+            transparent 28%
+        );
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-4;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        );
+
+    background-size:80px 80px;
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+}
+
+.particle{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    background:var(--gold);
+    border-radius:50%;
+
+    opacity:.35;
+
+    animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    from{
+        transform:translateY(110vh);
+    }
+
+    to{
+        transform:translateY(-10vh);
+    }
+}
+
+
+/* =========================
+   CURSOR
+========================= */
+
+.cursor-glow{
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,160,.08),
+            transparent 65%
+        );
+
+    z-index:999;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:22px 7%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    z-index:900;
+
+    background:rgba(3,6,5,.72);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+}
+
+.logo{
+    color:var(--white);
+
+    text-decoration:none;
+
+    font-size:22px;
+    font-weight:900;
+
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.nav-menu{
+    display:flex;
+    gap:35px;
+}
+
+.nav-menu a{
+    color:#8f9a95;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active{
+    color:var(--green);
+}
+
+.nav-button{
+    text-decoration:none;
+
+    color:var(--gold-light);
+
+    border:1px solid
+        rgba(216,183,106,.3);
+
+    padding:10px 18px;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+}
+
+.nav-button:hover{
+    border-color:var(--green);
+    color:var(--green);
+}
+
+.menu-toggle{
+    display:none;
+
+    border:none;
+    background:transparent;
+
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    display:block;
+
+    width:25px;
+    height:2px;
+
+    background:var(--white);
+
+    margin:5px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    padding:
+        150px 8%
+        100px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    color:var(--green);
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    margin-bottom:28px;
+}
+
+.eyebrow span{
+    width:35px;
+    height:1px;
+
+    background:var(--green);
+}
+
+.hero h1{
+    font-size:
+        clamp(55px,7vw,100px);
+
+    line-height:.92;
+
+    letter-spacing:-5px;
+
+    margin-bottom:30px;
+}
+
+.hero h1 strong{
+    display:block;
+
+    color:transparent;
+
+    -webkit-text-stroke:
+        1px var(--gold);
+
+    font-weight:800;
+}
+
+.hero-text{
+    max-width:650px;
+
+    color:var(--gray);
+
+    line-height:1.9;
+
+    font-size:16px;
+
+    margin-bottom:35px;
+}
+
+.hero-text b{
+    color:var(--white);
+}
+
+.hero-actions{
+    display:flex;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+}
+
+.button{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 24px;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    transition:.35s;
+}
+
+.button.primary{
+    background:var(--green);
+
+    color:#00150d;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,229,160,.12);
+}
+
+.button.primary:hover{
+    background:var(--gold-light);
+
+    transform:translateY(-4px);
+}
+
+.button.secondary{
+    border:
+        1px solid
+        rgba(216,183,106,.3);
+
+    color:var(--gold-light);
+}
+
+.button.secondary:hover{
+    border-color:var(--green);
+
+    color:var(--green);
+
+    transform:translateY(-4px);
+}
+
+.hero-meta{
+    display:flex;
+
+    gap:40px;
+
+    margin-top:55px;
+
+    padding-top:25px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+}
+
+.hero-meta div{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+}
+
+.hero-meta span{
+    color:var(--muted);
+
+    font-size:9px;
+
+    letter-spacing:2px;
+}
+
+.hero-meta strong{
+    color:var(--white);
+
+    font-size:13px;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.hero-visual{
+    min-height:500px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+}
+
+.profile-card{
+    width:330px;
+
+    padding:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.02)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.45);
+
+    position:relative;
+
+    z-index:3;
+}
+
+.card-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:var(--gold-light);
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    padding:
+        5px 3px 15px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 15px var(--green);
+}
+
+.profile-image{
+    width:100%;
+    height:330px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.profile-image::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,229,160,.08),
+            transparent 50%,
+            rgba(216,183,106,.1)
+        );
+}
+
+.profile-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.7s;
+}
+
+.profile-card:hover
+.profile-image img{
+    transform:scale(1.05);
+}
+
+.profile-info{
+    padding:
+        20px 5px 15px;
+}
+
+.profile-info h3{
+    font-size:20px;
+}
+
+.profile-info p{
+    color:var(--green);
+
+    font-size:12px;
+
+    margin-top:5px;
+}
+
+.profile-line{
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green),
+            transparent
+        );
+}
+
+.profile-location{
+    color:var(--gray);
+
+    font-size:11px;
+
+    padding:
+        15px 5px 4px;
+}
+
+.profile-location span{
+    color:var(--gold);
+
+    margin-right:5px;
+}
+
+
+/* ORBIT */
+
+.profile-orbit{
+    position:absolute;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(0,229,160,.15);
+}
+
+.orbit-one{
+    width:450px;
+    height:450px;
+
+    animation:
+        rotateOrbit 18s linear infinite;
+}
+
+.orbit-two{
+    width:520px;
+    height:520px;
+
+    border-color:
+        rgba(216,183,106,.12);
+
+    animation:
+        rotateOrbit 25s linear infinite reverse;
+}
+
+@keyframes rotateOrbit{
+
+    from{
+        transform:rotate(0);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    padding:
+        130px 8%;
+}
+
+.section-heading{
+    margin-bottom:60px;
+}
+
+.section-number{
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    display:block;
+
+    margin-bottom:14px;
+}
+
+.section-heading h2{
+    font-size:
+        clamp(38px,5vw,65px);
+
+    letter-spacing:-3px;
+}
+
+.section-heading h2 span{
+    color:var(--green);
+}
+
+.section-heading p{
+    color:var(--gray);
+
+    margin-top:15px;
+
+    line-height:1.8;
+}
+
+.glass{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    backdrop-filter:blur(12px);
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.4fr .6fr;
+
+    gap:20px;
+}
+
+.about-main{
+    padding:55px;
+
+    min-height:400px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.big-number{
+    position:absolute;
+
+    right:30px;
+    top:0;
+
+    font-size:180px;
+
+    font-weight:900;
+
+    color:
+        rgba(255,255,255,.025);
+}
+
+.about-main h3{
+    max-width:600px;
+
+    font-size:
+        clamp(32px,4vw,50px);
+
+    line-height:1.1;
+
+    position:relative;
+}
+
+.about-main h3 span{
+    display:block;
+
+    color:var(--green);
+}
+
+.about-main p{
+    max-width:650px;
+
+    color:var(--gray);
+
+    line-height:1.9;
+
+    margin-top:25px;
+
+    position:relative;
+}
+
+.about-side{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.mini-card{
+    padding:25px;
+
+    flex:1;
+
+    transition:.35s;
+}
+
+.mini-card:hover{
+    transform:translateX(7px);
+
+    border-color:
+        rgba(0,229,160,.25);
+}
+
+.mini-icon{
+    color:var(--green);
+
+    font-size:25px;
+}
+
+.mini-card h4{
+    margin:
+        15px 0 7px;
+
+    font-size:18px;
+}
+
+.mini-card p{
+    color:var(--gray);
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   DATA
+========================= */
+
+.data-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+}
+
+.data-card{
+    padding:30px;
+
+    min-height:150px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.35s;
+}
+
+.data-card::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:3px;
+    height:0;
+
+    background:
+        linear-gradient(
+            var(--green),
+            var(--gold)
+        );
+
+    transition:.4s;
+}
+
+.data-card:hover{
+    transform:translateY(-7px);
+
+    border-color:
+        rgba(0,229,160,.2);
+}
+
+.data-card:hover::before{
+    height:100%;
+}
+
+.data-label{
+    color:var(--muted);
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+}
+
+.data-card strong{
+    font-size:21px;
+}
+
+.data-card .green{
+    color:var(--green);
+}
+
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    max-width:1000px;
+
+    margin:auto;
+
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    left:10px;
+
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            var(--green),
+            var(--gold),
+            transparent
+        );
+}
+
+.timeline-item{
+    position:relative;
+
+    padding-left:50px;
+
+    margin-bottom:45px;
+}
+
+.timeline-dot{
+    position:absolute;
+
+    left:4px;
+    top:25px;
+
+    width:13px;
+    height:13px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 20px
+        rgba(0,229,160,.6);
+}
+
+.timeline-year{
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    margin-bottom:10px;
+}
+
+.timeline-content{
+    padding:35px;
+}
+
+.timeline-content > span{
+    color:var(--green);
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+.timeline-content h3{
+    font-size:27px;
+
+    margin:
+        10px 0 15px;
+}
+
+.timeline-content p{
+    color:var(--gray);
+
+    line-height:1.8;
+}
+
+.tags{
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:22px;
+}
+
+.tags span{
+    border:
+        1px solid
+        rgba(0,229,160,.2);
+
+    color:#9dcabd;
+
+    padding:7px 11px;
+
+    font-size:9px;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-layout{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:20px;
+}
+
+.skill-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.skill{
+    padding:25px;
+}
+
+.skill-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:12px;
+
+    margin-bottom:14px;
+}
+
+.skill-header span:last-child{
+    color:var(--green);
+}
+
+.progress{
+    height:3px;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.progress span{
+    display:block;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green),
+            var(--gold)
+        );
+}
+
+.interest-panel{
+    padding:40px;
+}
+
+.interest-panel h3{
+    font-size:35px;
+
+    line-height:1.15;
+
+    margin:
+        10px 0 30px;
+}
+
+.interest-panel h3 span{
+    color:var(--green);
+}
+
+.interest-tags{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.interest-tags span{
+    padding:10px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    color:var(--gray);
+
+    font-size:11px;
+
+    transition:.3s;
+}
+
+.interest-tags span:hover{
+    border-color:var(--green);
+
+    color:var(--green);
+
+    transform:translateY(-3px);
+}
+
+
+/* =========================
+   SPECIALIZATION
+========================= */
+
+.special-section{
+    padding:
+        140px 8%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #07140f,
+            #030605 50%,
+            #111009
+        );
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+}
+
+.special-inner{
+    max-width:1100px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.outline-label{
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border:
+        1px solid
+        rgba(216,183,106,.3);
+
+    color:var(--gold-light);
+
+    font-size:9px;
+
+    letter-spacing:3px;
+}
+
+.special-inner h2{
+    font-size:
+        clamp(38px,6vw,75px);
+
+    line-height:1.05;
+
+    letter-spacing:-3px;
+
+    margin:
+        25px auto;
+
+    max-width:950px;
+}
+
+.special-inner h2 span{
+    color:var(--green);
+}
+
+.special-inner > p{
+    max-width:750px;
+
+    margin:auto;
+
+    color:var(--gray);
+
+    line-height:1.9;
+}
+
+.technology-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:8px;
+
+    margin-top:50px;
+}
+
+.technology-grid div{
+    padding:18px 8px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:#91a099;
+
+    font-size:9px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.technology-grid div:hover{
+    color:var(--green);
+
+    border-color:
+        rgba(0,229,160,.25);
+
+    background:
+        rgba(0,229,160,.025);
+}
+
+
+/* =========================
+   GOALS
+========================= */
+
+.goal-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+}
+
+.goal-card{
+    padding:35px;
+
+    min-height:280px;
+
+    transition:.35s;
+}
+
+.goal-card:hover{
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(0,229,160,.2);
+}
+
+.goal-card > span{
+    color:var(--green);
+
+    font-size:12px;
+
+    letter-spacing:3px;
+}
+
+.goal-card h3{
+    font-size:25px;
+
+    margin:
+        35px 0 15px;
+}
+
+.goal-card p{
+    color:var(--gray);
+
+    line-height:1.8;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote-section{
+    padding:
+        150px 8%;
+
+    text-align:center;
+}
+
+.quote-inner{
+    max-width:1000px;
+
+    margin:auto;
+}
+
+.quote-mark{
+    font-family:Georgia,serif;
+
+    font-size:110px;
+
+    line-height:.5;
+
+    color:var(--gold);
+}
+
+.quote-inner h2{
+    font-size:
+        clamp(32px,5vw,60px);
+
+    line-height:1.2;
+
+    font-weight:300;
+
+    margin:
+        30px 0;
+}
+
+.quote-inner h2 span{
+    color:var(--green);
+}
+
+.quote-inner p{
+    color:var(--gold-light);
+
+    font-size:11px;
+
+    letter-spacing:3px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    padding-top:80px;
+}
+
+.contact-box{
+    max-width:1100px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:
+        90px 30px;
+}
+
+.contact-box h2{
+    font-size:
+        clamp(45px,7vw,80px);
+
+    letter-spacing:-4px;
+
+    line-height:1;
+
+    margin:
+        15px 0 20px;
+}
+
+.contact-box h2 span{
+    color:var(--green);
+}
+
+.contact-box p{
+    color:var(--gray);
+
+    margin-bottom:30px;
+}
+
+.contact-actions{
+    display:flex;
+
+    justify-content:center;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:
+        30px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
+
+    color:#66716c;
+
+    font-size:10px;
+}
+
+footer strong{
+    color:var(--gold-light);
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .navbar{
+        padding:
+            18px 5%;
+    }
+
+    .nav-menu{
+        position:absolute;
+
+        top:70px;
+
+        left:5%;
+        right:5%;
+
+        padding:20px;
+
+        display:none;
+
+        flex-direction:column;
+
+        background:
+            rgba(3,6,5,.97);
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
+    }
+
+    .nav-menu.open{
+        display:flex;
+    }
+
+    .nav-button{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        padding:
+            140px 6% 80px;
+    }
+
+    .eyebrow{
+        justify-content:center;
+    }
+
+    .hero-text{
+        margin:
+            0 auto 35px;
+    }
+
+    .hero-actions{
+        justify-content:center;
+    }
+
+    .hero-meta{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        min-height:430px;
+    }
+
+    .profile-card{
+        width:290px;
+    }
+
+    .profile-image{
+        height:290px;
+    }
+
+    .profile-orbit.orbit-one{
+        width:390px;
+        height:390px;
+    }
+
+    .profile-orbit.orbit-two{
+        width:450px;
+        height:450px;
+    }
+
+    .about-grid,
+    .skills-layout{
+        grid-template-columns:1fr;
+    }
+
+    .data-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .technology-grid{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .goal-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media(max-width:600px){
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .section{
+        padding:
+            90px 6%;
+    }
+
+    .about-main{
+        padding:30px;
+    }
+
+    .data-grid{
+        grid-template-columns:1fr;
+    }
+
+    .technology-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .hero-meta{
+        gap:20px;
+    }
+
+    .hero-meta strong{
+        font-size:11px;
+    }
+
+    footer{
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:
+            25px 6%;
+    }
+
+    .quote-section{
+        padding:
+            100px 6%;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- CURSOR -->
+<div class="cursor-glow"></div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <a href="#home" class="logo">
+        MAA<span>.</span>
+    </a>
+
+    <nav class="nav-menu">
+
+        <a href="#home" class="active">
+            Home
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#education">
+            Education
+        </a>
+
+        <a href="#skills">
+            Skills
+        </a>
+
+        <a href="#goals">
+            Goals
+        </a>
+
+    </nav>
+
+    <a href="#contact" class="nav-button">
+        CONTACT
+    </a>
+
+    <button
+        class="menu-toggle"
+        aria-label="Open Menu"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section class="hero" id="home">
+
+    <div class="hero-content reveal">
+
+        <div class="eyebrow">
+
+            <span></span>
+
+            PERSONAL PORTFOLIO — 2026
+
+        </div>
+
+
+        <h1>
+
+            Muhammad
+
+            <strong>
+                Angga Arido
+            </strong>
+
+        </h1>
+
+
+        <p class="hero-text">
+
+            Seorang siswa
+            <b>XII TJKT 2</b>
+            yang memiliki ketertarikan pada
+            teknologi, komputer, jaringan,
+            bisnis, serta pengembangan diri.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="#about"
+                class="button primary"
+            >
+
+                Explore Profile
+
+                <span>↗</span>
+
+            </a>
+
+
+            <a
+                href="#contact"
+                class="button secondary"
+            >
+
+                Contact Me
+
+            </a>
+
+        </div>
+
+
+        <div class="hero-meta">
+
+            <div>
+
+                <span>STATUS</span>
+
+                <strong>
+                    Student
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>FIELD</span>
+
+                <strong>
+                    TJKT
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>YEAR</span>
+
+                <strong>
+                    2026
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div class="hero-visual reveal">
+
+        <div class="profile-orbit orbit-one"></div>
+
+        <div class="profile-orbit orbit-two"></div>
+
+
+        <div class="profile-card">
+
+            <div class="card-top">
+
+                <span>
+                    PROFILE
+                </span>
+
+                <span class="status-dot"></span>
+
+            </div>
+
+
+            <div class="profile-image">
+
+                <img
+                    src="foto-angga.jpg.jpeg"
+                    alt="Foto Muhammad Angga Arido"
+                >
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <h3>
+                    Muhammad Angga Arido
+                </h3>
+
+                <p>
+                    Student • TJKT
+                </p>
+
+            </div>
+
+
+            <div class="profile-line"></div>
+
+
+            <div class="profile-location">
+
+                <span>⌖</span>
+
+                Indonesia
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    class="section"
+    id="about"
+>
+
+    <div class="section-heading reveal">
+
+        <span class="section-number">
+            01 / ABOUT ME
+        </span>
+
+        <h2>
+            Mengenal
+            <span>Angga</span>
+        </h2>
+
+        <p>
+            Sedikit tentang diri, karakter,
+            dan hal-hal yang sedang saya kembangkan.
+        </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+
+        <div class="about-main glass reveal">
+
+            <div class="big-number">
+                01
+            </div>
+
+            <h3>
+
+                Always Learning.
+
+                <span>
+                    Always Growing.
+                </span>
+
+            </h3>
+
+
+            <p>
+
+                Saya adalah siswa SMK jurusan
+                Teknik Komputer, Jaringan,
+                dan Telekomunikasi yang memiliki
+                rasa ingin tahu tinggi terhadap
+                teknologi dan berbagai bidang
+                yang berkaitan dengan masa depan.
+
+            </p>
+
+
+            <p>
+
+                Selain mempelajari jaringan
+                dan teknologi, saya juga memiliki
+                ketertarikan terhadap dunia bisnis,
+                ekonomi, investasi, serta
+                pengembangan kemampuan pribadi.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-side">
+
+
+            <div class="mini-card glass reveal">
+
+                <span class="mini-icon">
+                    ⌘
+                </span>
+
+                <h4>
+                    Technology
+                </h4>
+
+                <p>
+                    Komputer, jaringan, server,
+                    dan teknologi digital.
+                </p>
+
+            </div>
+
+
+            <div class="mini-card glass reveal">
+
+                <span class="mini-icon">
+                    ↗
+                </span>
+
+                <h4>
+                    Growth
+                </h4>
+
+                <p>
+                    Membangun kemampuan melalui
+                    pengalaman dan pembelajaran.
+                </p>
+
+            </div>
+
+
+            <div class="mini-card glass reveal">
+
+                <span class="mini-icon">
+                    ◇
+                </span>
+
+                <h4>
+                    Business
+                </h4>
+
+                <p>
+                    Ketertarikan pada ekonomi,
+                    bisnis, dan dunia finansial.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DATA DIRI
+========================= -->
+
+<section class="section">
+
+    <div class="section-heading reveal">
+
+        <span class="section-number">
+            02 / PERSONAL DATA
+        </span>
+
+        <h2>
+            Data
+            <span>Diri</span>
+        </h2>
+
+    </div>
+
+
+    <div class="data-grid">
+
+
+        <div class="data-card glass reveal">
+
+            <span class="data-label">
+                Nama Lengkap
+            </span>
+
+            <strong>
+                Muhammad Angga Arido
+            </strong>
+
+        </div>
+
+
+        <div class="data-card glass reveal">
+
+            <span class="data-label">
+                Nomor Absen
+            </span>
+
+            <strong class="green">
+                25
+            </strong>
+
+        </div>
+
+
+        <div class="data-card glass reveal">
+
+            <span class="data-label">
+                Kelas
+            </span>
+
+            <strong>
+                XII TJKT 2
+            </strong>
+
+        </div>
+
+
+        <div class="data-card glass reveal">
+
+            <span class="data-label">
+                Jurusan
+            </span>
+
+            <strong>
+                TJKT
+            </strong>
+
+        </div>
+
+
+        <div class="data-card glass reveal">
+
+            <span class="data-label">
+                Status
+            </span>
+
+            <strong>
+                Student
+            </strong>
+
+        </div>
+
+
+        <div class="data-card glass reveal">
+
+            <span class="data-label">
+                Tahun
+            </span>
+
+            <strong>
+                2026
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EDUCATION
+========================= -->
+
+<section
+    class="section"
+    id="education"
+>
+
+    <div class="section-heading reveal">
+
+        <span class="section-number">
+            03 / EDUCATION
+        </span>
+
+        <h2>
+            Pendidikan &
+            <span>Perjalanan</span>
+        </h2>
+
+        <p>
+            Perjalanan pembelajaran yang
+            sedang saya jalani.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                CURRENT
+            </div>
+
+
+            <div class="timeline-content glass">
+
+                <span>
+                    SMK
+                </span>
+
+                <h3>
+                    Teknik Komputer,
+                    Jaringan & Telekomunikasi
+                </h3>
+
+                <p>
+
+                    Mempelajari dasar komputer,
+                    jaringan, perangkat jaringan,
+                    sistem operasi, konfigurasi
+                    router, server, dan teknologi
+                    telekomunikasi.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>
+                        Networking
+                    </span>
+
+                    <span>
+                        Computer
+                    </span>
+
+                    <span>
+                        Server
+                    </span>
+
+                    <span>
+                        Telecommunication
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                NEXT
+            </div>
+
+
+            <div class="timeline-content glass">
+
+                <span>
+                    FUTURE
+                </span>
+
+                <h3>
+                    Business & Management
+                </h3>
+
+                <p>
+
+                    Memiliki rencana untuk melanjutkan
+                    pendidikan ke bidang bisnis,
+                    ekonomi, atau manajemen dan
+                    menggabungkannya dengan pengalaman
+                    teknologi.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <span>
+                        Business
+                    </span>
+
+                    <span>
+                        Management
+                    </span>
+
+                    <span>
+                        Economics
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section
+    class="section"
+    id="skills"
+>
+
+    <div class="section-heading reveal">
+
+        <span class="section-number">
+            04 / SKILLS
+        </span>
+
+        <h2>
+            Skills &
+            <span>Interests</span>
+        </h2>
+
+    </div>
+
+
+    <div class="skills-layout">
+
+
+        <div class="skill-list">
+
+
+            <div class="skill glass reveal">
+
+                <div class="skill-header">
+
+                    <span>
+                        Computer Networking
+                    </span>
+
+                    <span>
+                        80%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <span
+                        style="width:80%"
+                    ></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill glass reveal">
+
+                <div class="skill-header">
+
+                    <span>
+                        MikroTik
+                    </span>
+
+                    <span>
+                        75%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <span
+                        style="width:75%"
+                    ></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill glass reveal">
+
+                <div class="skill-header">
+
+                    <span>
+                        HTML / CSS
+                    </span>
+
+                    <span>
+                        80%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <span
+                        style="width:80%"
+                    ></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill glass reveal">
+
+                <div class="skill-header">
+
+                    <span>
+                        JavaScript
+                    </span>
+
+                    <span>
+                        65%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <span
+                        style="width:65%"
+                    ></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="interest-panel glass reveal">
+
+            <span class="section-number">
+                INTERESTS
+            </span>
+
+            <h3>
+
+                Things I'm
+
+                <span>
+                    Interested In.
+                </span>
+
+            </h3>
+
+
+            <div class="interest-tags">
+
+                <span>
+                    Technology
+                </span>
+
+                <span>
+                    Networking
+                </span>
+
+                <span>
+                    Programming
+                </span>
+
+                <span>
+                    Business
+                </span>
+
+                <span>
+                    Economics
+                </span>
+
+                <span>
+                    Finance
+                </span>
+
+                <span>
+                    Investing
+                </span>
+
+                <span>
+                    Self Development
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TJKT
+========================= -->
+
+<section class="special-section">
+
+    <div class="special-inner reveal">
+
+        <span class="outline-label">
+            SPECIALIZATION
+        </span>
+
+
+        <h2>
+
+            Teknik Komputer,
+            <br>
+
+            <span>
+                Jaringan & Telekomunikasi
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            TJKT merupakan bidang yang mempelajari
+            bagaimana perangkat komputer saling
+            terhubung, bagaimana jaringan dibangun,
+            bagaimana server bekerja, serta bagaimana
+            komunikasi digital berlangsung.
+
+        </p>
+
+
+        <div class="technology-grid">
+
+            <div>
+                COMPUTER
+            </div>
+
+            <div>
+                NETWORK
+            </div>
+
+            <div>
+                MIKROTIK
+            </div>
+
+            <div>
+                SERVER
+            </div>
+
+            <div>
+                TCP/IP
+            </div>
+
+            <div>
+                TELECOM
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GOALS
+========================= -->
+
+<section
+    class="section"
+    id="goals"
+>
+
+    <div class="section-heading reveal">
+
+        <span class="section-number">
+            05 / FUTURE
+        </span>
+
+        <h2>
+            Goals &
+            <span>Vision</span>
+        </h2>
+
+    </div>
+
+
+    <div class="goal-grid">
+
+
+        <div class="goal-card glass reveal">
+
+            <span>
+                01
+            </span>
+
+            <h3>
+                Higher Education
+            </h3>
+
+            <p>
+
+                Melanjutkan pendidikan ke
+                perguruan tinggi dan memperdalam
+                bidang bisnis, ekonomi,
+                atau manajemen.
+
+            </p>
+
+        </div>
+
+
+        <div class="goal-card glass reveal">
+
+            <span>
+                02
+            </span>
+
+            <h3>
+                Build Skills
+            </h3>
+
+            <p>
+
+                Terus mengembangkan kemampuan
+                teknologi sekaligus kemampuan
+                komunikasi, analisis, dan bisnis.
+
+            </p>
+
+        </div>
+
+
+        <div class="goal-card glass reveal">
+
+            <span>
+                03
+            </span>
+
+            <h3>
+                Create Something
+            </h3>
+
+            <p>
+
+                Menggunakan teknologi dan
+                pengetahuan yang dimiliki
+                untuk menciptakan sesuatu
+                yang memiliki manfaat.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUOTE
+========================= -->
+
+<section class="quote-section">
+
+    <div class="quote-inner reveal">
+
+        <span class="quote-mark">
+            “
+        </span>
+
+        <h2>
+
+            Don't just learn
+            <span>
+                how things work.
+            </span>
+
+            Learn how to build them.
+
+        </h2>
+
+        <p>
+            — MUHAMMAD ANGGA ARIDO
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+    class="section contact"
+    id="contact"
+>
+
+    <div class="contact-box glass reveal">
+
+        <span class="section-number">
+            06 / CONTACT
+        </span>
+
+
+        <h2>
+
+            Let's build
+
+            <span>
+                something.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Terima kasih sudah mengunjungi
+            personal profile saya.
+
+        </p>
+
+
+        <div class="contact-actions">
+
+            <!-- GANTI EMAIL DI SINI -->
+
+            <a
+                href="mailto:emailkamu@example.com"
+                class="button primary"
+            >
+
+                Send Email ↗
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+
+        ©
+        <span id="year"></span>
+
+        Muhammad Angga Arido
+
+    </div>
+
+
+    <div>
+
+        Built with
+
+        <strong>
+            HTML • CSS • JavaScript
+        </strong>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   PARTICLES
+========================= */
+
+const particles =
+    document.getElementById("particles");
+
+for(let i = 0; i < 45; i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (Math.random() * 15 + 10) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+    particle.style.opacity =
+        Math.random() * .5 + .1;
+
+    particles.appendChild(particle);
+}
+
+
+/* =========================
+   CURSOR GLOW
+========================= */
+
+const cursor =
+    document.querySelector(".cursor-glow");
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        cursor.style.left =
+            e.clientX + "px";
+
+        cursor.style.top =
+            e.clientY + "px";
+
+    }
+);
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const reveals =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(entry.isIntersecting){
+
+                        entry.target
+                            .classList
+                            .add("active");
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+reveals.forEach(
+    element => observer.observe(element)
+);
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuToggle =
+    document.querySelector(".menu-toggle");
+
+const navMenu =
+    document.querySelector(".nav-menu");
+
+menuToggle.addEventListener(
+    "click",
+    function(){
+
+        navMenu.classList.toggle("open");
+
+    }
+);
+
+
+/* =========================
+   CLOSE MOBILE MENU
+========================= */
+
+document
+    .querySelectorAll(".nav-menu a")
+    .forEach(
+        function(link){
+
+            link.addEventListener(
+                "click",
+                function(){
+
+                    navMenu.classList
+                        .remove("open");
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================
+   ACTIVE NAV
+========================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav-menu a"
+    );
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        let current = "";
+
+        sections.forEach(
+            function(section){
+
+                const sectionTop =
+                    section.offsetTop - 180;
+
+                if(
+                    window.scrollY >=
+                    sectionTop
+                ){
+
+                    current =
+                        section.getAttribute(
+                            "id"
+                        );
+
+                }
+
+            }
+        );
+
+        navLinks.forEach(
+            function(link){
+
+                link.classList.remove(
+                    "active"
+                );
+
+                if(
+                    link.getAttribute(
+                        "href"
+                    ) === "#" + current
+                ){
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================
+   YEAR
+========================= */
+
+document.getElementById("year")
+    .textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
